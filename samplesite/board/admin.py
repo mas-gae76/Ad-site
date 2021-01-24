@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Board
+from .models import Rubric
 
 # Register your models here.
 
@@ -11,3 +12,4 @@ class BoardAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Board, BoardAdmin)
+admin.site.register(Rubric)
