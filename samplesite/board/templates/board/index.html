@@ -4,6 +4,7 @@
 <div>
     <h2>{{ b.title }}</h2>
     <p>{{ b.content }}</p>
+    <p>{{ b.price }} &#8381;</p>
     <p><a href="{ % url 'by_rubric' rubric.pk % }">{{ rubric.name }}</a></p>
     <p>{{ b.published|date:"d.m.Y" }}</p>
 </div>
