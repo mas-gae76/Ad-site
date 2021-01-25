@@ -7,16 +7,17 @@
 <body>
     <h1>Объявления</h1>
     <div>
-        <a href="/board/">Главная</a>
+        <p><a href="{% url 'index' %}">Главная</a></p>
         {% for rubric in rubrics %}
-        <a href="/board/{{ rubric.pk }}">{{ rubric.name }}</a>
+        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
         {% endfor %}
+        <p><a href="{% url 'add' %}">Добавить</a></p>
     </div>
     {% for b in bs %}
     <div>
         <h2>{{ b.title }}</h2>
         <p>{{ b.content }}</p>
-        <p><a href="/board/{{ b.rubric.pk }}">{{ b.rubric.name }}</a></p>
+        <p><a href="{ % url 'by_rubric' rubric.pk % }">{{ rubric.name }}</a></p>
         <p>{{ b.published|date:"d.m.Y" }}</p>
     </div>
     {% endfor %}
