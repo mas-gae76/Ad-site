@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная{% endblock %}::Доска объявлений</title>
+</head>
+<body>
+    <header>
+        <h1>Объявления</h1>
+    </header>
+    <nav>
+        <p><a href="{% url 'index' %}">Главная</a></p>
+        <p><a href="{% url 'add' %}">Добавить</a></p>
+        {% for rubric in rubrics %}
+        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+        {% endfor %}
+    </nav>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>
