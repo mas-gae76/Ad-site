@@ -42,3 +42,6 @@ section p {
 div {
     width: 70%;
 }
+form ul {
+    color: red;
+}

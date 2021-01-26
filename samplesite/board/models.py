@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Rubric(models.Model):
@@ -24,3 +25,10 @@ class Board(models.Model):
         verbose_name_plural = 'Объявления'
         verbose_name = "Объявление"
         ordering = ['-published']
+
+    def clean(self):
+        errors = {}
+        if self.price and self.price < 0:
+            errors['price'] = ValidationError('Значение цены не может быть отрицательным')
+        if errors:
+            raise ValidationError(errors)
