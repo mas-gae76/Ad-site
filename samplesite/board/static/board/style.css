@@ -15,7 +15,7 @@ nav {
     background-color: #9da3a1;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 nav a {
     display: block;
@@ -38,4 +38,7 @@ section {
 }
 section p {
     color: black;
+}
+div {
+    width: 70%;
 }
