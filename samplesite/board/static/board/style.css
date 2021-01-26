@@ -12,11 +12,30 @@ nav {
     font-size: 16pt;
     width: 150px;
     float: left;
+    background-color: #9da3a1;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 25px;
 }
 nav a {
     display: block;
+    text-decoration: none;
     margin: 10px 0px;
 }
+nav a:hover {
+    color: #d3836d;
+    border-bottom: .15em solid;
+}
+.add {
+    color: green;
+}
+.add:hover {
+    color: green;
+    border-bottom: .15em solid;
+}
 section {
-    margin-left: 170px;
+    margin-left: 190px;
+}
+section p {
+    color: black;
 }
