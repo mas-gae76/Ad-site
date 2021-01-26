@@ -9,7 +9,7 @@
     {% else %}
     <p>{{ b.price }} &#8381;</p>
     {% endif %}
-    <p><a href="{ % url 'by_rubric' rubric.pk % }">{{ rubric.name }}</a></p>
+    <p><a href="{ % url 'by_rubric' rubric.pk % }">{{ rubric }}</a></p>
     <p>{{ b.published|date:"d.m.Y" }}</p>
     <hr align="left">
 </div>
