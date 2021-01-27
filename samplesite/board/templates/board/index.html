@@ -1,7 +1,7 @@
 {% extends "layout/basic.html" %}
 {% block content %}
 {% for b in bs %}
-<div>
+<div class="ads">
     <h2>{{ b.title }}</h2>
     <p>{{ b.content }}</p>
     {% if b.price == None %}

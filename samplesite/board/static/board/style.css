@@ -2,6 +2,9 @@ html {
     background-color: white;
     color: #5fbb8a;
 }
+body {
+    margin-top: 0px;
+}
 header h1 {
     font-size: 40pt;
     text-transform: uppercase;
@@ -39,9 +42,36 @@ section {
 section p {
     color: black;
 }
-div {
+.ads {
     width: 70%;
 }
 form ul {
     color: red;
+}
+span {
+    float: right;
+    space-
+}
+span a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Roboto, sans;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 10px;
+}
+span a:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 5.0)
+}
+.login a {
+    margin-right: 10px;
+    border-radius: 10px;
+    color: #000;
+}
+.register a {
+    color: white;
+    border-radius: 10px;
+    background-color: #3c9dde;
 }
