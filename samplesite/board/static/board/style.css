@@ -20,20 +20,20 @@ nav {
     padding-right: 10px;
     border-radius: 15px;
 }
-nav a {
+.add {
+    color: green;
+}
+.rubric {
     display: block;
     text-decoration: none;
     margin: 10px 0px;
     color: blue;
 }
-nav a:visited {
-    color: blue;
-}
-nav a:hover {
+.rubric:hover {
     color: #d3836d;
     border-bottom: .15em solid;
 }
-.add {
+.add:visited {
     color: green;
 }
 .add:hover {

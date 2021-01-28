@@ -17,10 +17,10 @@
         <a href="{% url 'login' %}">Вход</a>
     </span>
     <nav>
-        <p><a href="{% url 'index' %}">Главная</a></p>
+        <p><a class="rubric" href="{% url 'index' %}">Главная</a></p>
         <p><a class="add" href="{% url 'add' %}">Добавить</a></p>
         {% for rubric in rubrics %}
-        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+        <a class="rubric" href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
         {% endfor %}
     </nav>
     <section>
