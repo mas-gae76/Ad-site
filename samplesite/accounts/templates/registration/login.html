@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block main %}
+<div>
+    <h4>Войти в свой аккаунт</h4>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="hidden" name="text" value="{{ next }}">
+        <button type="submit">Войти</button>
+    </form>
+</div>
+{% endblock %}
