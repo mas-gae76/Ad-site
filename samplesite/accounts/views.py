@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib import auth
+from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, RegisterForm
 
@@ -34,3 +36,8 @@ def register(request):
     else:
         user_form = RegisterForm()
     return render(request, 'auth/register.html', {'user_form': user_form})
+
+
+def logout_view(request):
+    auth.logout(request)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
