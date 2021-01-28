@@ -15,7 +15,7 @@ nav {
     font-size: 16pt;
     width: 150px;
     float: left;
-    background-color: #9da3a1;
+    background-color: #9da3a0;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 15px;
@@ -24,6 +24,10 @@ nav a {
     display: block;
     text-decoration: none;
     margin: 10px 0px;
+    color: blue;
+}
+nav a:visited {
+    color: blue;
 }
 nav a:hover {
     color: #d3836d;
@@ -50,7 +54,6 @@ form ul {
 }
 span {
     float: right;
-    space-
 }
 span a {
     display: inline-block;
