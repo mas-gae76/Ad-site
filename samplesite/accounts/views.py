@@ -2,8 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, RegisterForm
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
+from django.urls import path
 
 
 def user_login(request):
@@ -36,9 +35,3 @@ def register(request):
     else:
         user_form = RegisterForm()
     return render(request, 'auth/register.html', {'user_form': user_form})
-
-
-class RegisterView(CreateView):
-    template_name = 'register.html'
-    form_class = RegisterForm
-    success_url = reverse_lazy('index')
