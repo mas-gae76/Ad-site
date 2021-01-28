@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 
 def user_login(request):
@@ -13,11 +15,30 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Аутентификация прошла успешно')
+                    return render(request, 'auth/profile.html', {'form': form})
                 else:
                     return HttpResponse('Из этой учётной записи уже вышли')
             else:
                 return HttpResponse('Вы ввели некорректный логин или пароль')
     else:
         form = LoginForm()
-    return render(request, 'board/profile.html', {'form': form})
+    return render(request, 'auth/login.html', {'form': form})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = RegisterForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password'])
+            new_user.save()
+            return render(request, 'auth/profile.html', {'new_user': new_user})
+    else:
+        user_form = RegisterForm()
+    return render(request, 'auth/register.html', {'user_form': user_form})
+
+
+class RegisterView(CreateView):
+    template_name = 'register.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('index')
