@@ -6,7 +6,11 @@
 <div>
     <h2>{{ b.title }}</h2>
     <p>{{ b.content }}</p>
+    {% if b.price == None %}
+    <p>Договорная</p>
+    {% else %}
     <p>{{ b.price }} &#8381;</p>
+    {% endif %}
     <p>{{ b.published|date:"d.m.Y" }}</p>
     <hr align="left">
 </div>
