@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import auth
+from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from .forms import LoginForm, RegisterForm
+from django.contrib import messages
 
 
 def user_login(request):
@@ -41,4 +43,21 @@ def register(request):
 
 def logout_view(request):
     auth.logout(request)
-    return redirect('http://127.0.0.1:8000/board/')
+    return redirect('index')
+
+
+def changePassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Ваш пароль был успешно обновлён!\r\n Войдите теперь с новым паролем')
+            auth.logout(request)
+            return redirect('login')
+        else:
+            messages.error(request, 'Пожалуйста, исправьте ошибку ниже')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'auth/change_password.html', {'form': form})
+
