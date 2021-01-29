@@ -89,10 +89,8 @@ span a:hover {
     color: #3c3c3c;
     padding-top: 90px;
     padding-bottom: 190px;
-    height: 0px;
-}
-
-.footer p {
+    margin-top: 230px;
+    padding-left: 20px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -106,9 +104,12 @@ p.footer__name {
 
 p.footer__social {
     color: #3c3c3c;
+    margin-top: 32px;
+    margin-bottom: 0px;
 }
 
 p.footer__social-icons {
+    margin-top: 15px;
     color: #FFF;
     font-size: 32px;
 }
@@ -130,7 +131,7 @@ p.footer__social-icons a:hover {
 /* GRID */
 
 .container {
-    width: 1140px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
