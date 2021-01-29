@@ -60,4 +60,3 @@ def changePassword(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'auth/change_password.html', {'form': form})
-

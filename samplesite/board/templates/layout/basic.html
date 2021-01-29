@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>{% block title %}Главная{% endblock %}::Доска объявлений</title>
     <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -27,5 +29,42 @@
         {% block content %}
         {% endblock %}
     </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <p class="footer__name">mas-gae76</p>
+                    <p> © 2021 Сервис размещения объявлений</p>
+                </div>
+
+                <div class="col-4">
+                    <p class="footer__social">My profiles in social media:</p>
+                    <p class="footer__social-icons">
+
+                        <a href="https://vk.com/masgae" target="_blank" title="Vkontakte">
+                        <i class="fa fa-vk" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" target="_blank" title="Twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/gae_boy76" target="_blank" title="Instagram">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/profile.php?id=100028050035414" target="_blank" title="Facebook">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/channel/UCNjpldzbmGfNipgUMqAMz4Q?view_as=subscriber" target="_blank" title="Youtube">
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
