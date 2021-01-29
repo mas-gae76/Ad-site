@@ -20,9 +20,6 @@ nav {
     padding-right: 10px;
     border-radius: 15px;
 }
-.add {
-    color: green;
-}
 .rubric {
     display: block;
     text-decoration: none;
@@ -32,6 +29,11 @@ nav {
 .rubric:hover {
     color: #d3836d;
     border-bottom: .15em solid;
+}
+.add {
+    display: block;
+    text-decoration: none;
+    color: green;
 }
 .add:visited {
     color: green;

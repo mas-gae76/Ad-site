@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import auth
 from django.shortcuts import redirect
@@ -27,15 +27,16 @@ def user_login(request):
 
 def register(request):
     if request.method == 'POST':
-        user_form = RegisterForm(request.POST)
-        if user_form.is_valid():
-            user = user_form.save(commit=False)
-            user.set_password(user_form.cleaned_data['password'])
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
             user.save()
-            return render(request, 'auth/profile.html', {'new_user': user})
+            login(request, user)
+            return render(request, 'auth/profile.html', {'form': form})
     else:
-        user_form = RegisterForm()
-    return render(request, 'auth/register.html', {'user_form': user_form})
+        form = RegisterForm()
+    return render(request, 'auth/register.html', {'form': form})
 
 
 def logout_view(request):
