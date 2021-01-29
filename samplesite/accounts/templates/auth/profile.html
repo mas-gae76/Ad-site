@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Мой профиль{% endblock %}
 {% block content %}
     <h1>Добро пожаловать, {{ user.first_name }}!</h1>
     <p><a href="{% url 'logout' %}">Выйти</a></p>
