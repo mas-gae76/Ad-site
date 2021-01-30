@@ -12,18 +12,17 @@
     <a href="{ % url 'by_rubric' rubric.pk % }">{{ rubric }}</a>
     <p>{{ b.published|date:"d.m.Y" }}</p>
     <hr align="left">
-
 </div>
 {% endfor %}
-<div>
+<div class="ads">
     {% if page.has_previous %}
-    <a href="?page={{page.previous_page_number}}">&lt;</a>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="?page={{ page.previous_page_number }}">&laquo;</a>
     {% endif %}
-    Часть №{{ page.number }} из {{ page.paginator.num_pages }}
+    {% for page in page.paginator.page_range %}
+    <a href="?page={{ page }}">{{ page }}</a>
+    {% endfor %}
     {% if page.has_next %}
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a href="?page={{page.next_page_number}}">&gt;</a>
+    <a href="?page={{ page.next_page_number }}">&raquo;</a>
     {% endif %}
 </div>
 {% endblock %}
