@@ -52,7 +52,7 @@ def changePassword(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, 'Ваш пароль был успешно обновлён!\r\n Войдите теперь с новым паролем')
+            messages.success(request, 'Ваш пароль был успешно обновлён!\r\n Войдите с новым паролем')
             auth.logout(request)
             return redirect('login')
         else:
