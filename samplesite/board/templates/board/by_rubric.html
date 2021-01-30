@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Рубрика: {{current_rubric.name }}</h2>
 {% for b in bs %}
-<div>
+<div class="ads">
     <h2>{{ b.title }}</h2>
     <p>{{ b.content }}</p>
     {% if b.price == None %}
@@ -15,4 +15,15 @@
     <hr align="left">
 </div>
 {% endfor %}
+<div class="ads">
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">&laquo;</a>
+    {% endif %}
+    {% for page in page.paginator.page_range %}
+    <a href="?page={{ page }}">{{ page }}</a>
+    {% endfor %}
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">&raquo;</a>
+    {% endif %}
+</div>
 {% endblock %}
