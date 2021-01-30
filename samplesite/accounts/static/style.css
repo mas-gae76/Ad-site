@@ -45,7 +45,21 @@ button {
     border-radius: 4px;
     color: #fff;
     border-color: transparent;
+    height: 35px;
     width: 103%;
+    outline: none;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -o-border-radius: 25px;
+    -ms-border-radius: 25px;
+    border-radius: 25px;
+}
+button:hover {
+    top: 5px;
+    transition: .5s;
+    color: #0ace00;
+    border: #0ace00 2px solid;
+    background: white;
 }
 ul li {
     color: red;
