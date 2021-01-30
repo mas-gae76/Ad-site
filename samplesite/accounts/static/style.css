@@ -55,8 +55,7 @@ button {
     border-radius: 25px;
 }
 button:hover {
-    top: 5px;
-    transition: .5s;
+    transition: .9s;
     color: #0ace00;
     border: #0ace00 2px solid;
     background: white;
