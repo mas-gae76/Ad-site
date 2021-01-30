@@ -3,12 +3,19 @@ from .models import Board, Rubric
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import BoardForm
+from django.core.paginator import Paginator
 
 
 def index(request):
     bs = Board.objects.all()
     rubrics = Rubric.objects.all()
-    context = {'bs': bs, 'rubrics': rubrics}
+    paginator = Paginator(bs, 5)
+    if 'page' in request.GET:
+        page_num = request.GET['page']
+    else:
+        page_num = 1
+    page = paginator.get_page(page_num)
+    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics}
     return render(request, 'board/index.html', context)
 
 
