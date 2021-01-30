@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>{% block title %}Личный кабинет{% endblock %}</title>
 </head>
 <body>
-    <div>
+    <div class="form">
         <h1>Личный кабинет</h1>
         {% block content %}
         {% endblock %}
