@@ -2,8 +2,7 @@
 {% block title %}Вход{% endblock %}
 {% block content %}
 <div>
-    <h2>Вход</h2>
-
+    <h3>Вход | <a class="dop_option" href="{% url 'register' %}">Регистрация</a></h3>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
