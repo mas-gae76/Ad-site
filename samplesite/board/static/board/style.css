@@ -187,3 +187,67 @@ p.footer__social-icons a:hover {
      border: 1px solid black;
      border-radius: 25px;
  }
+ .auth_error {
+    color: #3c9dde;
+}
+ /** Create ad **/
+ .form {
+    display: block;
+    width: 40%;
+}
+ textarea {
+     width: 100%;
+     border: 2px solid;
+     border-radius: 3px;
+     resize: none;
+ }
+textarea:hover {
+    border-color: #3c9dde;
+    transition: 0.3s ease-in-out;
+}
+textarea:focus {
+    outline: none;
+    border-color: #3c9dde;
+    transition: .3s ease-in-out;
+}
+option {
+    border: 2px solid #3c9dde;
+}
+select option:hover {
+    border-color: #3c9dde;
+}
+p {
+    text-align: left;
+}
+form p input {
+    width: 100%;
+    border-radius: 3px;
+}
+form p input:hover {
+    border-color: #3c9dde;
+    transition: 0.3s ease-in-out;
+}
+form p input:focus {
+    outline: none;
+    border-color: #3c9dde;
+}
+input[type='submit'] {
+    background-color: #3c9dde;
+    border-radius: 4px;
+    color: #fff;
+    border-color: transparent;
+    height: 35px;
+    width: 103%;
+    outline: none;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -o-border-radius: 25px;
+    -ms-border-radius: 25px;
+    border-radius: 25px;
+}
+input[type='submit']:hover {
+    transition: .9s;
+    color: #0ace00;
+    border: #0ace00 2px solid;
+    background: white;
+}
