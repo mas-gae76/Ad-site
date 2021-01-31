@@ -60,3 +60,7 @@ def changePassword(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'auth/change_password.html', {'form': form})
+
+
+def show_person_cabinet(request):
+    return render(request, 'auth/profile.html')
