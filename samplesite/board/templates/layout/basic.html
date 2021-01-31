@@ -12,12 +12,20 @@
     <header>
         <h1>Объявления</h1>
     </header>
-    <span class="register">
+    {% if not user.is_authenticated %}
+    <div>
+    <span title="Регистрация в личном кабинете" class="register">
          <a href="{% url 'register' %}">Регистрация</a>
     </span>
-    <span class="login">
+    <span title="Вход в Ваш личный кабинет" class="login">
         <a href="{% url 'login' %}">Вход</a>
     </span>
+    </div>
+    {% else %}
+    <span class="register">
+        <a title="Личный кабинет" href="{% url 'profile' %}">{{ user.first_name }}</a>
+    </span>
+    {% endif %}
     <nav>
         <p><a class="rubric" href="{% url 'index' %}">Главная</a></p>
         <p><a class="add" href="{% url 'add' %}">Добавить</a></p>
@@ -30,7 +38,7 @@
         {% endblock %}
     </section>
 
-    <div class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -65,6 +73,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
