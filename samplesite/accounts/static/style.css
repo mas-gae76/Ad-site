@@ -60,11 +60,11 @@ button:hover {
 ul li {
     color: red;
 }
-h3 .option {
+.dop_option {
     text-decoration: none;
     color: #3c9dde;
 }
-.auth_error {
+.form a {
     text-decoration: none;
     color: #3c9dde;
 }
