@@ -60,3 +60,11 @@ button:hover {
 ul li {
     color: red;
 }
+h3 .option {
+    text-decoration: none;
+    color: #3c9dde;
+}
+.auth_error {
+    text-decoration: none;
+    color: #3c9dde;
+}
