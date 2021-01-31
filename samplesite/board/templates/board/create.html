@@ -2,9 +2,15 @@
 {% block title %}Добавление объявления{% endblock %}
 {% block content %}
 <h1>Добавление объявления</h1>
+<div class="form">
+{% if user.is_authenticated %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Добавить">
 </form>
+{% else %}
+    Вы не авторизованы <a class="auth_error" href="{% url 'login' %}">Авторизация</a>
+{% endif %}
+</div>
 {% endblock %}
