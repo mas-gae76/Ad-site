@@ -149,3 +149,31 @@ p.footer__social-icons a:hover {
 .col-4:last-child {
     margin-right: 0px;
 }
+ .pointer {
+     display: inline-block;
+     margin-left: 5px;
+     margin-right: 5px;
+     text-decoration: none;
+     border-radius: 8px;
+     color: darkslategray;
+     border: 2px solid darkslategray;
+     padding: 5px 5px 5px 5px;
+ }
+ .pointer:hover {
+     color: brown;
+     border-color: brown;
+     transition: .3s ease-in-out;
+ }
+ .page_number {
+     display: inline-block;
+     padding: 5px 5px 5px 5px;
+     text-decoration: none;
+     color: #3c9dde;
+     border: 1px solid #3c9dde;
+     border-radius: 15px;
+ }
+ .page_number:hover {
+     border-color: #0ace00;
+     color: #0ace00;
+     transition: .5s ease-in-out;
+ }
