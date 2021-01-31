@@ -156,24 +156,34 @@ p.footer__social-icons a:hover {
      text-decoration: none;
      border-radius: 8px;
      color: darkslategray;
-     border: 2px solid darkslategray;
+     border: 1px solid darkslategray;
      padding: 5px 5px 5px 5px;
  }
  .pointer:hover {
      color: brown;
      border-color: brown;
-     transition: .3s ease-in-out;
+     transition: .5s ease-in-out;
  }
  .page_number {
      display: inline-block;
-     padding: 5px 5px 5px 5px;
+     margin: 3px;
+     padding: 5px;
      text-decoration: none;
      color: #3c9dde;
      border: 1px solid #3c9dde;
-     border-radius: 15px;
+     border-radius: 25px;
  }
  .page_number:hover {
      border-color: #0ace00;
      color: #0ace00;
      transition: .5s ease-in-out;
+ }
+ .active {
+     display: inline-block;
+     margin: 3px;
+     color: black;
+     text-decoration: none;
+     padding: 5px;
+     border: 1px solid black;
+     border-radius: 25px;
  }
