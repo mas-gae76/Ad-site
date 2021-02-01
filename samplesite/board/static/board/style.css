@@ -28,6 +28,7 @@ nav {
     color: blue;
 }
 .rubric:hover {
+    width: fit-content;
     color: #d3836d;
     border-bottom: .15em solid;
 }
@@ -250,4 +251,8 @@ input[type='submit']:hover {
     color: #0ace00;
     border: #0ace00 2px solid;
     background: white;
+}
+.rubric_post {
+    text-decoration: none;
+    color: #3c9dde;
 }
