@@ -2,6 +2,7 @@
 {% block title %}Мой профиль{% endblock %}
 {% block content %}
     <h1>Добро пожаловать, {{ user.first_name }}!</h1>
+    <p><a href="{% url 'user_posts' %}">Мои объявления</a></p>
     <p><a href="{% url 'add' %}">Добавить объявление</a></p>
     <p><a href="{% url 'logout' %}">Выйти</a></p>
     <p><a href="{% url 'change_password' %}">Изменить пароль</a></p>
