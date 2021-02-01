@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <title>Мои объявления</title>
+</head>
+<body>
+{% for post in posts %}
+<div class="ads">
+    {{ post.user_post }}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    {% if post.price == None %}
+    <p>Договорная</p>
+    {% else %}
+    <p>{{ post.price }} &#8381;</p>
+    {% endif %}
+    <a href="{ % url 'by_rubric' rubric.pk % }">{{ post.rubric }}</a>
+    <p>{{ post.published|date:"d.m.Y" }}</p>
+    <hr align="left">
+</div>
+{% endfor %}
+</body>
+</html>
