@@ -9,7 +9,7 @@ from django.core.paginator import Paginator
 def index(request):
     bs = Board.objects.all()
     rubrics = Rubric.objects.all()
-    paginator = Paginator(bs, 7)
+    paginator = Paginator(bs, 10)
     num_pages = paginator.num_pages
     if 'page' in request.GET:
         page_num = request.GET['page']
@@ -22,7 +22,7 @@ def index(request):
         pages = [x for x in range(num_pages - 10, num_pages + 1)]
     else:
         pages = [x for x in range(num_pages - 5, num_pages + 6)]
-    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages}
+    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages, 'user': user}
     return render(request, 'board/index.html', context)
 
 
@@ -30,7 +30,7 @@ def by_rubric(request, rubric_id):
     bs = Board.objects.filter(rubric=rubric_id)
     rubrics = Rubric.objects.all()
     current_rubric = Rubric.objects.get(pk=rubric_id)
-    paginator = Paginator(bs, 2)
+    paginator = Paginator(bs, 10)
     num_pages = paginator.num_pages
     if 'page' in request.GET:
         page_num = request.GET['page']
@@ -56,3 +56,9 @@ class BoardCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['rubrics'] = Rubric.objects.all()
         return context
+
+
+def show_user_posts(request):
+    user_posts = Board.objects.filter(user=request.user)
+    context = {'posts': user_posts}
+    return render(request, 'user_posts.html', context)
