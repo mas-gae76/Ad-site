@@ -1,7 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Board, Rubric
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
 from .forms import BoardForm
 from django.core.paginator import Paginator
 
@@ -22,7 +20,7 @@ def index(request):
         pages = [x for x in range(num_pages - 10, num_pages + 1)]
     else:
         pages = [x for x in range(num_pages - 5, num_pages + 6)]
-    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages, 'user': user}
+    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages}
     return render(request, 'board/index.html', context)
 
 
@@ -47,15 +45,17 @@ def by_rubric(request, rubric_id):
     return render(request, 'board/by_rubric.html', context)
 
 
-class BoardCreateView(CreateView):
-    template_name = 'board/create.html'
-    form_class = BoardForm
-    success_url = reverse_lazy('index')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['rubrics'] = Rubric.objects.all()
-        return context
+def add_ad(request):
+    if request.method == 'POST':
+        form = BoardForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            return redirect('index')
+    else:
+        form = BoardForm()
+        return render(request, 'board/create.html', {'form': form})
 
 
 def show_user_posts(request):
