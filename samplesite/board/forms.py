@@ -1,8 +1,8 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Board
 
 
-class BoardForm(ModelForm):
+class BoardForm(forms.ModelForm):
 
     class Meta:
         model = Board
