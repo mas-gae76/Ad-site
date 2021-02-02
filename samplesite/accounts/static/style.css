@@ -58,6 +58,9 @@ button:hover {
     background: white;
 }
 ul li {
+    color: #3c9dde;
+}
+.errorlist {
     color: red;
 }
 .dop_option {
@@ -67,4 +70,8 @@ ul li {
 .form a {
     text-decoration: none;
     color: #3c9dde;
+}
+.logout {
+    color: red;
+    text-decoration: none;
 }
