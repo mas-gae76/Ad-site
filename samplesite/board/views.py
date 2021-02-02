@@ -55,7 +55,8 @@ def add_ad(request):
             return redirect('index')
     else:
         form = BoardForm()
-        return render(request, 'board/create.html', {'form': form})
+        rubrics = Rubric.objects.all()
+        return render(request, 'board/create.html', {'form': form, 'rubrics': rubrics})
 
 
 def show_user_posts(request):
