@@ -10,6 +10,7 @@ class LoginForm(forms.Form):
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(max_length=30, label='Никнейм')
     first_name = forms.CharField(max_length=30, label='Имя')
+    email = forms.EmailField(required=True, label='Электронная почта')
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
 
