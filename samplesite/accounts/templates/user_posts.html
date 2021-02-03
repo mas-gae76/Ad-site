@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>Мои объявления</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     {% else %}
     <p>{{ post.price }} &#8381;</p>
     {% endif %}
-    <a href="{ % url 'by_rubric' rubric.pk % }">{{ post.rubric }}</a>
+    <a href="{% url 'by_rubric' rubric.pk %}">{{ post.rubric }}</a>
     <p>{{ post.published|date:"d.m.Y" }}</p>
     <hr align="left">
 </div>
