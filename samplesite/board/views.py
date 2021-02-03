@@ -63,3 +63,4 @@ def show_user_posts(request):
     user_posts = Board.objects.filter(user=request.user)
     context = {'posts': user_posts}
     return render(request, 'user_posts.html', context)
+
