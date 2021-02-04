@@ -10,14 +10,13 @@ body {
 
 .form {
     position: relative;
-    width: 250px;
+    width: 22%;
     height: fit-content;
     top: 30%;
-    left: 50%;
+    left: 45%;
     margin: -125px 0 0px -125px;
     padding: 20px 20px 10px 10px;
     text-align: center;
-    background-color: green;
     border-radius: 7px;
     background-color: white;
 }
@@ -42,6 +41,7 @@ button {
     border-radius: 4px;
     color: #fff;
     border-color: transparent;
+    margin-top: 5px;
     height: 35px;
     width: 103%;
     outline: none;
@@ -57,9 +57,7 @@ button:hover {
     border: #0ace00 2px solid;
     background: white;
 }
-ul li {
-    color: #3c9dde;
-}
+
 .errorlist {
     color: red;
 }
@@ -72,6 +70,10 @@ ul li {
     text-decoration: none;
 }
 .main {
+    text-decoration: none;
+    color: #3c9dde;
+}
+.reset_password {
     text-decoration: none;
     color: #3c9dde;
 }
