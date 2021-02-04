@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Board, Rubric
-from .forms import BoardForm
+from .forms import BoardForm, SearchForm
 from django.core.paginator import Paginator
+from haystack.query import SearchQuerySet
 
 
 def index(request):
@@ -65,3 +66,14 @@ def show_user_posts(request):
     context = {'bs': user_posts, 'rubrics': rubrics}
     return render(request, 'board/index.html', context)
 
+
+def search(request):
+    form = SearchForm()
+    if 'keyword' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            cd = form.cleaned_data
+            results = SearchQuerySet().models(Board).filter(content=cd['keyword']).load_all()
+            total_results = results.count()
+            return render(request, 'board/search.html', {'form': form, 'cd': cd, 'results': results, 'total_results': total_results})
+    return render(request, 'board/search.html', {'form': form})
