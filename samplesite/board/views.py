@@ -62,6 +62,6 @@ def add_ad(request):
 def show_user_posts(request):
     user_posts = Board.objects.filter(user=request.user)
     rubrics = Rubric.objects.all()
-    context = {'posts': user_posts, 'rubrics': rubrics}
-    return render(request, 'user_posts.html', context)
+    context = {'bs': user_posts, 'rubrics': rubrics}
+    return render(request, 'board/index.html', context)
 
