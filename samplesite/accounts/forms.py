@@ -23,3 +23,9 @@ class RegisterForm(forms.ModelForm):
         if cd['password'] != cd['password_2']:
             raise forms.ValidationError('Пароли не совпадают! \r\n Попытайтесь снова')
         return cd['password_2']
+
+    def clean_email(self):
+        cd = self.cleaned_data
+        if User.objects.filter(email=cd['email']).exists():
+            raise forms.ValidationError('С этим email уже проходила регистрация ранее')
+        return cd['email']
