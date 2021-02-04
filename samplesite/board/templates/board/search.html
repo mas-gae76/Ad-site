@@ -1,0 +1,23 @@
+{% extends "layout/basic.html" %}
+{% block title %}Поиск{% endblock %}
+{% block content %}
+    {% if 'keyword' in request.GET %}
+        <h1>Объявления, содержащие "{{ cd.query }}"</h1>
+        <h3>Найдено {{ total_results }} результатов {{ total_results }}</h3>
+        {% for result in results %}
+            {% with post=result.object %}
+                <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                {{ post.body|truncatewords:5 }}
+            {% endwith %}
+            {% empty %}
+            <p>Нет результатов поиска для выражения</p>
+        {% endfor %}
+        <p><a href="{% url 'post_search' %}">Искать снова</a></p>
+    {% else %}
+        <h1>Искать объявления</h1>
+        <form action="." method="get">
+            {{ form.as_p }}
+            <input type="submit" value="Поиск">
+        </form>
+    {% endif %}
+{% endblock %}
