@@ -96,7 +96,7 @@ def password_reset(request):
                     }
                     email = render_to_string(email_template_name, c)
                     try:
-                        send_mail(subject, email, 'admin@example.com', [user.email], fail_silently=False)
+                        send_mail(subject, email, 'admin@example.com', [user.email])
                     except BadHeaderError:
                         return HttpResponse('Некорректная тема письма')
                     return redirect('password_reset_done')
