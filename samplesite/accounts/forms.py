@@ -29,3 +29,9 @@ class RegisterForm(forms.ModelForm):
         if User.objects.filter(email=cd['email']).exists():
             raise forms.ValidationError('С этим email уже проходила регистрация ранее')
         return cd['email']
+
+    def clean_username(self):
+        cd = self.cleaned_data
+        if User.objects.filter(username=cd['username']).exists():
+            raise forms.ValidationError('С этим никнеймом уже зарегистрирован пользователь')
+        return cd['username']
