@@ -67,11 +67,11 @@ ul li {
     text-decoration: none;
     color: #3c9dde;
 }
-.form a {
-    text-decoration: none;
-    color: #3c9dde;
-}
 .logout {
     color: red;
     text-decoration: none;
+}
+.main {
+    text-decoration: none;
+    color: #3c9dde;
 }
