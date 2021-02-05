@@ -256,3 +256,18 @@ input[type='submit']:hover {
     text-decoration: none;
     color: #3c9dde;
 }
+.search_field span {
+    display: inline-flex;
+    width: 65%;
+}
+.search_field span p {
+    padding-top: -10px;
+    width: 90%;
+}
+.search_field span input[name="keyword"] {
+    width: 95%;
+}
+.search_field span input[type="submit"] {
+    margin-top: 7px;
+    width: 10%;
+}
