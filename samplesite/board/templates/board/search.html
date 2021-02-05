@@ -1,23 +1,28 @@
 {% extends "layout/basic.html" %}
 {% block title %}Поиск{% endblock %}
 {% block content %}
-    {% if 'keyword' in request.GET %}
-        <h1>Объявления, содержащие "{{ cd.query }}"</h1>
-        <h3>Найдено {{ total_results }} результатов {{ total_results }}</h3>
-        {% for result in results %}
-            {% with post=result.object %}
-                <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-                {{ post.body|truncatewords:5 }}
-            {% endwith %}
-            {% empty %}
-            <p>Нет результатов поиска для выражения</p>
-        {% endfor %}
-        <p><a href="{% url 'post_search' %}">Искать снова</a></p>
+    <h1>Объявления по запросу "{{ cd.keyword }}"</h1>
+    <h3>Найдено {{ total_results }} совпадений </h3>
+    {% if results == '' %}
+        <p>Ничего не найдено</p>
     {% else %}
-        <h1>Искать объявления</h1>
-        <form action="." method="get">
-            {{ form.as_p }}
-            <input type="submit" value="Поиск">
-        </form>
+    {% for result in results %}
+    <div class="ads">
+        <h2>{{ result.title }}</h2>
+        <p>{{ result.content }}</p>
+        {% if result.price == None %}
+        <p>Договорная</p>
+        {% else %}
+        <p>{{ result.price }} &#8381;</p>
+        {% endif %}
+        {% for rubric in rubrics %}
+        {% if rubric == result.rubric %}
+        <a class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
+        {% endif %}
+        {% endfor %}
+        <p>{{ result.published|date:"d.m.Y" }}</p>
+        <hr align="left">
+    </div>
+    {% endfor %}
     {% endif %}
 {% endblock %}
