@@ -26,6 +26,10 @@
         <a title="Личный кабинет" href="{% url 'profile' %}">Личный кабинет</a>
     </span>
     {% endif %}
+    <form action="{% url 'post_search' %}" method="get" style="width: 10%">
+        <span>{{ search_form.as_p }}
+        <input type="submit" value="Поиск" name="q"></span>
+    </form>
     <nav>
         <p><a class="rubric" href="{% url 'index' %}">Главная</a></p>
         <p><a class="add" href="{% url 'add' %}">Добавить</a></p>
