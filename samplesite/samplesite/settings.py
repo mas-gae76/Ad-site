@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '3sy5v88nn@7-v23q^m_7i4+n*dx+4=8c_h=y6gewu%5zc7jj8!'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,9 +130,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8000/solr/blog'
-    },
-}
+
+
