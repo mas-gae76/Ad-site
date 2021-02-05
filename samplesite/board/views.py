@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from .models import Board, Rubric
 from .forms import BoardForm, SearchForm
 from django.core.paginator import Paginator
-from haystack.query import SearchQuerySet
+from django.db.models.query_utils import Q
 
 
 def index(request):
+    form = SearchForm()
     bs = Board.objects.all()
     rubrics = Rubric.objects.all()
     paginator = Paginator(bs, 10)
@@ -21,7 +22,7 @@ def index(request):
         pages = [x for x in range(num_pages - 10, num_pages + 1)]
     else:
         pages = [x for x in range(num_pages - 5, num_pages + 6)]
-    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages}
+    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'pages': pages, 'search_form': form}
     return render(request, 'board/index.html', context)
 
 
@@ -68,12 +69,14 @@ def show_user_posts(request):
 
 
 def search(request):
-    form = SearchForm()
-    if 'keyword' in request.GET:
+    if 'keyword' in request.GET and request.GET['keyword']:
         form = SearchForm(request.GET)
         if form.is_valid():
+            rubrics = Rubric.objects.all()
             cd = form.cleaned_data
-            results = SearchQuerySet().models(Board).filter(content=cd['keyword']).load_all()
+            query = Q(title__icontains=cd['keyword']) | Q(content__icontains=cd['keyword'])
+            results = Board.objects.filter(query)
             total_results = results.count()
-            return render(request, 'board/search.html', {'form': form, 'cd': cd, 'results': results, 'total_results': total_results})
-    return render(request, 'board/search.html', {'form': form})
+            return render(request, 'board/search.html', {'search_form': SearchForm(), 'cd': cd, 'results': results, 'total_results': total_results, 'rubrics': rubrics})
+    else:
+        return redirect('index')
