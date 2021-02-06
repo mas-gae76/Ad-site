@@ -3,6 +3,9 @@
 {% for b in bs %}
 <div class="ads">
     <h2>{{ b.title }}</h2>
+    {% load staticfiles %}
+    <img src="{% {{ MEDIA_URL }}{{b.images}}' %}">
+    <p>{{ b.image }}</p>
     <p>{{ b.content }}</p>
     {% if b.price == None %}
     <p>Договорная</p>
