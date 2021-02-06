@@ -17,6 +17,7 @@ class Rubric(models.Model):
 
 class Board(models.Model):
     title = models.CharField(max_length=50, verbose_name='Товар')
+    image = models.ImageField(verbose_name='Изображение', null=True, upload_to='images')
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
     price = models.FloatField(null=True, blank=True, verbose_name='Цена')
     published = models.DateField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
