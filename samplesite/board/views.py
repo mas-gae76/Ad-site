@@ -49,8 +49,10 @@ def by_rubric(request, rubric_id):
 
 def add_ad(request):
     if request.method == 'POST':
-        form = BoardForm(request.POST)
+        form = BoardForm(request.POST, request.FILES)
         if form.is_valid():
+            if 'image' in request.FILES:
+                form.image = request.FILES['image']
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
