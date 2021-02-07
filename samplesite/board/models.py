@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from .utilities import get_timestamp_path
 
 
 class Rubric(models.Model):
@@ -17,11 +18,13 @@ class Rubric(models.Model):
 
 class Board(models.Model):
     title = models.CharField(max_length=50, verbose_name='Товар')
-    image = models.ImageField(verbose_name='Изображение', null=True, upload_to='images')
+    image = models.ImageField(verbose_name='Изображение', blank=True, upload_to=get_timestamp_path)
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
     price = models.FloatField(null=True, blank=True, verbose_name='Цена')
-    published = models.DateField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
+    contacts = models.TextField(verbose_name='Контакты')
+    published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT, verbose_name='Рубрика')
+    is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
     class Meta:
@@ -35,3 +38,17 @@ class Board(models.Model):
             errors['price'] = ValidationError('Значение цены не может быть отрицательным')
         if errors:
             raise ValidationError(errors)
+
+    def delete(self, *args, **kwargs):
+        for i in self.AdditionalImage_set.all():
+            i.delete()
+        super().delete(*args, **kwargs)
+
+
+class AdditionalImage(models.Model):
+    board = models.ForeignKey(Board, on_delete=models.CASCADE, verbose_name='Объявление')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name_plural = 'Дополнительные иллюстрации'
+        verbose_name = 'Дополнительная иллюстрация'
