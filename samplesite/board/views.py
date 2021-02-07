@@ -27,6 +27,7 @@ def index(request):
 
 
 def by_rubric(request, rubric_id):
+    form = SearchForm
     bs = Board.objects.filter(rubric=rubric_id)
     rubrics = Rubric.objects.all()
     current_rubric = Rubric.objects.get(pk=rubric_id)
@@ -43,11 +44,12 @@ def by_rubric(request, rubric_id):
         pages = [x for x in range(num_pages - 10, num_pages + 1)]
     else:
         pages = [x for x in range(num_pages - 5, num_pages + 6)]
-    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'current_rubric': current_rubric, 'pages': pages}
+    context = {'bs': page.object_list, 'page': page, 'rubrics': rubrics, 'current_rubric': current_rubric, 'pages': pages, 'search_form': form}
     return render(request, 'board/by_rubric.html', context)
 
 
 def add_ad(request):
+    search_form = SearchForm
     if request.method == 'POST':
         form = BoardForm(request.POST, request.FILES)
         if form.is_valid():
@@ -60,7 +62,7 @@ def add_ad(request):
     else:
         form = BoardForm()
         rubrics = Rubric.objects.all()
-        return render(request, 'board/create.html', {'form': form, 'rubrics': rubrics})
+        return render(request, 'board/create.html', {'form': form, 'rubrics': rubrics, 'search_form': search_form})
 
 
 def show_user_posts(request):
