@@ -258,7 +258,7 @@ input[type='submit']:hover {
 }
 .search_field span {
     display: inline-flex;
-    width: 65%;
+    width: 69%;
 }
 .search_field span p {
     padding-top: -10px;
@@ -269,5 +269,5 @@ input[type='submit']:hover {
 }
 .search_field span input[type="submit"] {
     margin-top: 7px;
-    width: 10%;
+    width: 70px;
 }
