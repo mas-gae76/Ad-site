@@ -6,7 +6,7 @@ class BoardForm(forms.ModelForm):
 
     class Meta:
         model = Board
-        fields = ('title', 'image', 'content', 'price', 'rubric')
+        fields = ('title', 'image', 'content', 'price', 'contacts', 'rubric')
 
 
 class SearchForm(forms.Form):
