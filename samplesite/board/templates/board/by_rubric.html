@@ -1,17 +1,25 @@
 {% extends "layout/basic.html" %}
+{% load thumbnail %}
+{% load static %}
 {% block title %}{{ current_rubric.name }}{% endblock %}
 {% block content %}
 <h2>Рубрика: {{current_rubric.name }}</h2>
 {% for b in bs %}
 <div class="ads">
     <h2>{{ b.title }}</h2>
+    {% if b.image %}
+    <img src="{% thumbnail b.image 'default' %}">
+    {% else %}
+    <img width="135" height="90" src="{% static 'board/empty.jpg' %}">
+    {% endif %}
     <p>{{ b.content }}</p>
     {% if b.price == None %}
     <p>Договорная</p>
     {% else %}
     <p>{{ b.price }} &#8381;</p>
     {% endif %}
-    <p>{{ b.published|date:"d.m.Y" }}</p>
+    <p>{{ b.contacts }}</p>
+    <p>{{ b.published }}</p>
     <hr align="left">
 </div>
 {% endfor %}
