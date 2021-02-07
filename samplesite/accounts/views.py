@@ -71,6 +71,7 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {'form': form})
 
 
+@csrf_exempt
 def show_person_cabinet(request):
     return render(request, 'registration/profile.html')
 
