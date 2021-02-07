@@ -1,23 +1,28 @@
 {% extends "layout/basic.html" %}
+{% load static %}
+{% load thumbnail %}
 {% block content %}
 {% for b in bs %}
 <div class="ads">
     <h2>{{ b.title }}</h2>
-    {% load staticfiles %}
-    <img src="{% {{ MEDIA_URL }}{{b.images}}' %}">
-    <p>{{ b.image }}</p>
+    {% if b.image %}
+    <img src="{% thumbnail b.image 'default' %}"}>
+    {% else %}
+    <img width="135" height="90" src="{% static 'board/empty.jpg' %}">
+    {% endif %}
     <p>{{ b.content }}</p>
     {% if b.price == None %}
     <p>Договорная</p>
     {% else %}
     <p>{{ b.price }} &#8381;</p>
     {% endif %}
+    <p>{{ b.contacts }}</p>
     {% for rubric in rubrics %}
     {% if rubric == b.rubric %}
     <a class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
     {% endif %}
     {% endfor %}
-    <p>{{ b.published|date:"d.m.Y" }}</p>
+    <p>{{ b.published }}</p>
     <hr align="left">
 </div>
 {% endfor %}
