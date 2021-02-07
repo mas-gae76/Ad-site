@@ -19,6 +19,16 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+THUMBNAIL_ALIASES = {
+    '': {
+        'default': {
+            'size': (90, 90),
+            'crop': 'scale',
+        },
+    },
+}
+THUMBNAIL_BASEDIR = 'images'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -42,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'board.apps.BoardConfig',
     'accounts.apps.AccountsConfig',
+    'django_cleanup',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
+
+SHORT_DATETIME_FORМAT = 'd.m.Y h:i'
 
 USE_I18N = True
 
