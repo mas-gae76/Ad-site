@@ -15,4 +15,5 @@ urlpatterns = [
     path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('reset_password/', views.password_reset, name='reset_password'),
     path('done/', views.password_reset_done, name='password_reset_done'),
+    path('delete_account/', views.del_user, name='delete_account'),
 ]
