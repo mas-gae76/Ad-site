@@ -26,7 +26,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, 'registration/profile.html', {'form': form})
+                    return redirect('profile')
                 else:
                     return HttpResponse('Из этой учётной записи уже вышли')
             else:
@@ -106,3 +106,9 @@ def password_reset(request):
 
 def password_reset_done(request):
     return render(request, 'registration/password_reset_done.html')
+
+
+def del_user(request):
+    user = User.objects.get(username=request.user)
+    user.delete()
+    return redirect('index')
