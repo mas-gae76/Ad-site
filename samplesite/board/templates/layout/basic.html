@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
     <header>
         <h1>Объявления</h1>
     </header>
@@ -22,8 +23,16 @@
     </span>
     </div>
     {% else %}
-    <span class="register">
-        <a title="Личный кабинет" href="{% url 'profile' %}">Личный кабинет</a>
+    <span id="pc_nav">
+        <li class="menu-item"><a title="Личный кабинет">Личный кабинет</a>
+            <ul class="submenu">
+                <li><a class="main" href="{% url 'user_posts' %}">Мои объявления</a></li>
+                <li><a class="main" class="main" href="{% url 'add' %}">Добавить объявление</a></li>
+                <li><a class="main" href="{% url 'change_password' %}">Изменить пароль</a></li>
+                <li><a class="main" href="{% url 'delete_account' %}">Удалить аккаунт</a></li>
+                <li><a class="logout" href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </li>
     </span>
     {% endif %}
     <form action="{% url 'post_search' %}" method="get" class="search_field">
