@@ -7,32 +7,33 @@
     <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/static/board/scripts/script.js"></script>
 </head>
 <body>
-    <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
-    <header>
-        <h1>Объявления</h1>
+<header>
+    <h1>Объявления</h1>
     </header>
     {% if not user.is_authenticated %}
     <div>
-    <span title="Регистрация в личном кабинете" class="register">
+        <span title="Регистрация в личном кабинете" class="register">
          <a href="{% url 'register' %}">Регистрация</a>
     </span>
-    <span title="Вход в Ваш личный кабинет" class="login">
+        <span title="Вход в Ваш личный кабинет" class="login">
         <a href="{% url 'login' %}">Вход</a>
     </span>
     </div>
     {% else %}
     <span id="pc_nav">
-        <li class="menu-item"><a title="Личный кабинет">Личный кабинет</a>
-            <ul class="submenu">
-                <li><a class="main" href="{% url 'user_posts' %}">Мои объявления</a></li>
-                <li><a class="main" class="main" href="{% url 'add' %}">Добавить объявление</a></li>
-                <li><a class="main" href="{% url 'change_password' %}">Изменить пароль</a></li>
-                <li><a class="main" href="{% url 'delete_account' %}">Удалить аккаунт</a></li>
-                <li><a class="logout" href="{% url 'logout' %}">Выйти</a></li>
-            </ul>
-        </li>
+        <div class="menu-item">
+            <a>Личный кабинет</a>
+            <div class="submenu">
+                <p><a class="main" href="{% url 'user_posts' %}">Мои объявления</a></p>
+                <p><a class="main" class="main" href="{% url 'add' %}">Добавить объявление</a></p>
+                <p><a class="main" href="{% url 'change_password' %}">Изменить пароль</a></p>
+                <p><a class="main" href="{% url 'delete_account' %}">Удалить аккаунт</a></p>
+                <p><a class="logout" href="{% url 'logout' %}">Выйти</a></p>
+            </div>
+        </div>
     </span>
     {% endif %}
     <form action="{% url 'post_search' %}" method="get" class="search_field">
@@ -64,23 +65,23 @@
                     <p class="footer__social-icons">
 
                         <a href="https://vk.com/masgae" target="_blank" title="Vkontakte">
-                        <i class="fa fa-vk" aria-hidden="true"></i>
+                            <i class="fa fa-vk" aria-hidden="true"></i>
                         </a>
 
                         <a href="#" target="_blank" title="Twitter">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
                         </a>
 
                         <a href="https://www.instagram.com/gae_boy76" target="_blank" title="Instagram">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
 
                         <a href="https://www.facebook.com/profile.php?id=100028050035414" target="_blank" title="Facebook">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
                         </a>
 
                         <a href="https://www.youtube.com/channel/UCNjpldzbmGfNipgUMqAMz4Q?view_as=subscriber" target="_blank" title="Youtube">
-                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
                         </a>
                     </p>
                 </div>
