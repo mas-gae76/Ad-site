@@ -78,10 +78,22 @@ span a:hover {
     border-radius: 10px;
     color: #000;
 }
-#pc_nav {
+.register a {
     color: white;
     border-radius: 10px;
     background-color: #3c9dde;
+}
+.menu-item {
+    color: white;
+    border-radius: 10px;
+    background-color: #3c9dde;
+}
+
+.menu-item .submenu {
+    background: white;
+    display: none;
+    position: absolute;
+    cursor: pointer;
 }
 /** FOOTER **/
 
@@ -270,8 +282,4 @@ input[type='submit']:hover {
 .search_field span input[type="submit"] {
     margin-top: 7px;
     width: 70px;
-}
-.submenu {
-    display: none;
-    position: absolute;
 }
