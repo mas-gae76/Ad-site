@@ -10,7 +10,7 @@ body {
 
 .form {
     position: relative;
-    width: 22%;
+    width: fit-content;
     height: fit-content;
     top: 30%;
     left: 45%;
