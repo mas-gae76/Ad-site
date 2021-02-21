@@ -91,9 +91,6 @@ span a:hover {
 }
 
 .menu-item .submenu {
-    height: 50px;
-    width: 150px;
-    background: greenyellow;
     display: none;
     position: absolute;
     cursor: pointer;
