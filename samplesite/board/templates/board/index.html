@@ -4,6 +4,10 @@
 {% block content %}
 {% for b in bs %}
 <div class="ads">
+    <a title="Перейти к '{{ b.user.username }}'" class="board_username" href="#">{{ b.user.username }}</a>
+    {% if user.is_authenticated and b.user == user %}
+    <a class="delete_ad" href="{% url 'delete_ad' b.pk %}">Удалить</a>
+    {% endif %}
     <h2>{{ b.title }}</h2>
     {% if b.image %}
     <img src="{% thumbnail b.image 'default' %}"}>
@@ -19,7 +23,7 @@
     <p>{{ b.contacts }}</p>
     {% for rubric in rubrics %}
     {% if rubric == b.rubric %}
-    <a class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
+    <a title="Просмотр объявлений из рубрики '{{ rubric }}'" class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
     {% endif %}
     {% endfor %}
     <p>{{ b.published }}</p>
