@@ -85,3 +85,9 @@ def search(request):
             return render(request, 'board/search.html', {'search_form': SearchForm(), 'cd': cd, 'results': results, 'total_results': total_results, 'rubrics': rubrics})
     else:
         return redirect('index')
+
+
+def delete_ad(request, ad_id):
+    deleted_ad = Board.objects.filter(id=ad_id)
+    deleted_ad.delete()
+    return redirect('index')
