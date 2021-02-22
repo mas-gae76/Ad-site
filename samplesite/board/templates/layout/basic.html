@@ -7,9 +7,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="/static/board/scripts/script.js"></script>
 </head>
 <body>
+<script type="text/javascript" src="{% static 'board/scripts/script.js' %}"></script>
 <header>
     <h1>Объявления</h1>
     </header>
@@ -25,7 +25,7 @@
     {% else %}
     <span id="pc_nav">
         <div class="menu-item">
-            <a>Личный кабинет</a>
+            <a href="{% url 'profile' %}">Личный кабинет</a>
             <div class="submenu">
                 <p><a class="main" href="{% url 'user_posts' %}">Мои объявления</a></p>
                 <p><a class="main" class="main" href="{% url 'add' %}">Добавить объявление</a></p>
