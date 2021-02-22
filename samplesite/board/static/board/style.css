@@ -1,5 +1,5 @@
 html {
-    background-color: white;
+    background-color: #ddd7d7;
     color: #5fbb8a;
 }
 body {
@@ -83,17 +83,15 @@ span a:hover {
     border-radius: 10px;
     background-color: #3c9dde;
 }
-.menu-item {
+.menu-item a {
     color: white;
     border-radius: 10px;
     background-color: #3c9dde;
-    cursor: pointer;
 }
 
 .menu-item .submenu {
     display: none;
     position: absolute;
-    cursor: pointer;
 }
 /** FOOTER **/
 
@@ -282,4 +280,18 @@ input[type='submit']:hover {
 .search_field span input[type="submit"] {
     margin-top: 7px;
     width: 70px;
+}
+.delete_ad {
+    float: right;
+    color: red;
+    text-decoration: none;
+}
+.delete_ad:hover {
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 5.0);
+}
+.board_username {
+    text-decoration: none;
+    color: #0ace00;
 }
