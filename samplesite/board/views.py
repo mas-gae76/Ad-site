@@ -3,6 +3,9 @@ from .models import Board, Rubric
 from .forms import BoardForm, SearchForm
 from django.core.paginator import Paginator
 from django.db.models.query_utils import Q
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 
 def index(request):
@@ -91,3 +94,19 @@ def delete_ad(request, ad_id):
     deleted_ad = Board.objects.filter(id=ad_id)
     deleted_ad.delete()
     return redirect('index')
+
+
+@login_required
+def edit_ad(request, ad_id):
+    ad = get_object_or_404(Board, pk=ad_id)
+    if request.method == 'POST':
+        form = BoardForm(request.POST, request.FILES, instance=ad)
+        if form.is_valid():
+            ad = form.save(commit=False)
+            ad.is_edited = True
+            ad.save()
+            messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
+            return redirect('index')
+    else:
+        form = BoardForm(instance=ad)
+    return render(request, 'board/edit.html', {'form': form, 'rubrics': Rubric.objects.all, 'search_form': SearchForm})
