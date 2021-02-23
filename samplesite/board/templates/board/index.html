@@ -6,11 +6,12 @@
 <div class="ads">
     <a title="Перейти к '{{ b.user.username }}'" class="board_username" href="#">{{ b.user.username }}</a>
     {% if user.is_authenticated and b.user == user %}
-    <a class="delete_ad" href="{% url 'delete_ad' b.pk %}">Удалить</a>
+    <a class="edit_ad" href="{% url 'edit_ad' b.pk %}">Редактировать</a>
+    <p><a class="delete_ad" href="{% url 'delete_ad' b.pk %}">Удалить</a></p>
     {% endif %}
     <h2>{{ b.title }}</h2>
     {% if b.image %}
-    <img src="{% thumbnail b.image 'default' %}"}>
+    <img src="{% thumbnail b.image 'default' %}">
     {% else %}
     <img width="135" height="90" src="{% static 'board/empty.jpg' %}">
     {% endif %}
@@ -26,7 +27,11 @@
     <a title="Просмотр объявлений из рубрики '{{ rubric }}'" class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
     {% endif %}
     {% endfor %}
+    {% if b.is_edited is False %}
     <p>{{ b.published }}</p>
+    {% else %}
+    <p title="Изменено {{ b.edited }}">{{ b.published }}</p>
+    {% endif %}
     <hr align="left">
 </div>
 {% endfor %}
