@@ -295,3 +295,13 @@ input[type='submit']:hover {
     text-decoration: none;
     color: #0ace00;
 }
+.edit_ad {
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+.edit_ad:hover {
+    padding: 3px;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 5.0);
+}
