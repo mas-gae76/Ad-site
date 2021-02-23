@@ -98,7 +98,7 @@ def delete_ad(request, ad_id):
 
 @login_required
 def edit_ad(request, ad_id):
-    ad = get_object_or_404(Board, pk=ad_id)
+    ad = get_object_or_404(Board, pk=ad_id, user=request.user)
     if request.method == 'POST':
         form = BoardForm(request.POST, request.FILES, instance=ad)
         if form.is_valid():
@@ -110,3 +110,8 @@ def edit_ad(request, ad_id):
     else:
         form = BoardForm(instance=ad)
     return render(request, 'board/edit.html', {'form': form, 'rubrics': Rubric.objects.all, 'search_form': SearchForm})
+
+
+def show_user_profile(request, user_id):
+    ads = Board.objects.filter(user=user_id)
+    return render(request, 'board/user_profile.html', {'ads': ads, 'rubrics': Rubric.objects.all, 'search_form': SearchForm})
