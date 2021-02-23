@@ -4,7 +4,11 @@
 {% block content %}
 {% for b in bs %}
 <div class="ads">
-    <a title="Перейти к '{{ b.user.username }}'" class="board_username" href="#">{{ b.user.username }}</a>
+    {% if user.is_authenticated and b.user == user %}
+    <a title="Перейти в свой профиль" class="board_username" href="{% url 'user_profile' user.pk %}">Ваше объявление</a>
+    {% else %}
+    <a title="Перейти к '{{ b.user.username }}'" class="board_username" href="{% url 'user_profile' b.user.pk %}">{{ b.user.username }}</a>
+    {% endif %}
     {% if user.is_authenticated and b.user == user %}
     <a class="edit_ad" href="{% url 'edit_ad' b.pk %}">Редактировать</a>
     <p><a class="delete_ad" href="{% url 'delete_ad' b.pk %}">Удалить</a></p>
@@ -17,9 +21,9 @@
     {% endif %}
     <p>{{ b.content }}</p>
     {% if b.price == None %}
-    <p>Договорная</p>
+    <p><b>Договорная</b></p>
     {% else %}
-    <p>{{ b.price }} &#8381;</p>
+    <p><b>{{ b.price }} &#8381;</b></p>
     {% endif %}
     <p>{{ b.contacts }}</p>
     {% for rubric in rubrics %}
