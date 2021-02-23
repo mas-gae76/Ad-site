@@ -9,4 +9,5 @@ urlpatterns = [
     path('user_posts/', views.show_user_posts, name='user_posts'),
     path('search/', views.search, name='post_search'),
     path('delete_ad/<int:ad_id>/', views.delete_ad, name='delete_ad'),
+    path('edit_ad/<int:ad_id>/', views.edit_ad, name='edit_ad'),
 ]
