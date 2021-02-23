@@ -20,7 +20,7 @@ class Board(models.Model):
     title = models.CharField(max_length=50, verbose_name='Товар')
     image = models.ImageField(verbose_name='Изображение', blank=True, upload_to=get_timestamp_path)
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
-    price = models.FloatField(null=True, blank=True, verbose_name='Цена')
+    price = models.IntegerField(null=True, blank=True, verbose_name='Цена')
     contacts = models.TextField(verbose_name='Контакты')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     edited = models.DateTimeField(auto_now=True, db_index=True)
