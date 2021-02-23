@@ -23,8 +23,10 @@ class Board(models.Model):
     price = models.FloatField(null=True, blank=True, verbose_name='Цена')
     contacts = models.TextField(verbose_name='Контакты')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
+    edited = models.DateTimeField(auto_now=True, db_index=True)
     rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT, verbose_name='Рубрика')
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
+    is_edited = models.BooleanField(default=False, db_index=True, verbose_name='Изменено')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
     class Meta:
