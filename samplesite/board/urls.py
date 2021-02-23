@@ -10,4 +10,5 @@ urlpatterns = [
     path('search/', views.search, name='post_search'),
     path('delete_ad/<int:ad_id>/', views.delete_ad, name='delete_ad'),
     path('edit_ad/<int:ad_id>/', views.edit_ad, name='edit_ad'),
+    path('user_profile/<int:user_id>/', views.show_user_profile, name='user_profile'),
 ]
