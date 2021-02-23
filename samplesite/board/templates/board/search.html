@@ -1,5 +1,7 @@
 {% extends "layout/basic.html" %}
 {% block title %}Поиск{% endblock %}
+{% load thumbnail %}
+{% load static %}
 {% block content %}
     <h1>Объявления по запросу "{{ cd.keyword }}"</h1>
     <h3>Найдено {{ total_results }} совпадений </h3>
@@ -8,19 +10,33 @@
     {% else %}
     {% for result in results %}
     <div class="ads">
+        {% if user.is_authenticated and result.user == user %}
+        <a title="Перейти в свой профиль" class="board_username" href="{% url 'user_profile' user.pk %}">Ваше объявление</a>
+        {% else %}
+        <a title="Перейти к '{{ result.user.username }}'" class="board_username" href="{% url 'user_profile' result.user.pk %}">{{ result.user.username }}</a>
+        {% endif %}
         <h2>{{ result.title }}</h2>
+        {% if result.image %}
+        <img src="{% thumbnail result.image 'default' %}">
+        {% else %}
+        <img width="135" height="90" src="{% static 'board/empty.jpg' %}">
+        {% endif %}
         <p>{{ result.content }}</p>
         {% if result.price == None %}
-        <p>Договорная</p>
+        <p><b>Договорная</b></p>
         {% else %}
-        <p>{{ result.price }} &#8381;</p>
+        <p><b>{{ result.price }} &#8381;</b></p>
         {% endif %}
         {% for rubric in rubrics %}
         {% if rubric == result.rubric %}
         <a class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
         {% endif %}
         {% endfor %}
-        <p>{{ result.published|date:"d.m.Y" }}</p>
+        {% if result.is_edited is False %}
+        <p>{{ result.published }}</p>
+        {% else %}
+        <p title="Изменено {{ result.edited }}">{{ result.published }}</p>
+        {% endif %}
         <hr align="left">
     </div>
     {% endfor %}
