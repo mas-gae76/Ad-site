@@ -62,6 +62,8 @@ def add_ad(request):
             instance.user = request.user
             instance.save()
             return redirect('index')
+        else:
+            return render(request, 'board/create.html', {'form': form, 'search_form': SearchForm})
     else:
         form = BoardForm()
         rubrics = Rubric.objects.all()
