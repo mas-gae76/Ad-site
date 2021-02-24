@@ -21,7 +21,7 @@ class Board(models.Model):
     image = models.ImageField(verbose_name='Изображение', blank=True, upload_to=get_timestamp_path)
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
     price = models.IntegerField(null=True, blank=True, verbose_name='Цена')
-    contacts = models.TextField(verbose_name='Контакты')
+    contacts = models.CharField(verbose_name='Контакты', max_length=15)
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     edited = models.DateTimeField(auto_now=True, db_index=True)
     rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT, verbose_name='Рубрика')
@@ -33,13 +33,6 @@ class Board(models.Model):
         verbose_name_plural = 'Объявления'
         verbose_name = "Объявление"
         ordering = ['-published']
-
-    def clean(self):
-        errors = {}
-        if self.price and self.price < 0:
-            errors['price'] = ValidationError('Значение цены не может быть отрицательным')
-        if errors:
-            raise ValidationError(errors)
 
     def delete(self, *args, **kwargs):
         for i in self.AdditionalImage_set.all():
