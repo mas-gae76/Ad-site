@@ -281,6 +281,9 @@ input[type='submit']:hover {
     margin-top: 7px;
     width: 70px;
 }
+.ads {
+    width: 70%;
+}
 .ads .delete_ad {
     float: right;
     color: red;
@@ -314,7 +317,7 @@ input[type='submit']:hover {
     float: right;
     background-color: #fdff80;
     padding: 5px;
-    width: 23%;
+    width: fit-content;
     border-radius: 10px;
     margin-left: 70px;
     margin-right: 15px;
