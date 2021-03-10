@@ -18,8 +18,9 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from .settings import MEDIA_URL, MEDIA_ROOT
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('board.urls')),
+    path('api/', include('board.urls', namespace='api')),
     path('accounts/', include('accounts.urls')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
