@@ -6,10 +6,8 @@ from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from .serializers import BoardSerializer
-from rest_framework.authentication import SessionAuthentication
+from rest_framework import generics
 
 
 def index(request):
@@ -123,35 +121,11 @@ def show_user_profile(request, user_id):
     return render(request, 'board/user_profile.html', {'ads': ads, 'rubrics': Rubric.objects.all, 'search_form': SearchForm})
 
 
-class CsrfExemptSessionAuth(SessionAuthentication):
-    def enforce_csrf(self, request):
-        return None
+class BoardListView(generics.ListAPIView):
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
 
 
-class BoardView(APIView):
-    authentication_classes = (CsrfExemptSessionAuth,)
-    queryset = None
-    def get(self, request):
-        bs = Board.objects.all()
-        serializer = BoardSerializer(bs, many=True)
-        return Response({'boards': serializer.data})
-
-    def post(self, request):
-        board = request.data.get('board')
-        serializer = BoardSerializer(data=board)
-        if serializer.is_valid(raise_exception=True):
-            board_saved = serializer.save()
-        return Response({'success': "Board '{}' published successfully".format(board_saved.title)})
-
-    def put(self, request, pk):
-        saved_board = get_object_or_404(Board.objects.all(), pk=pk)
-        data = request.data.get('board')
-        serializer = BoardSerializer(instance=saved_board, data=data, partial=True)
-        if serializer.is_valid(raise_exception=True):
-            board_saved = serializer.save()
-            return Response({'success': "Board '{}' updated successfully".format(board_saved.title)})
-
-    def delete(self, request, pk):
-        board = get_object_or_404(Board.object.all(), pk=pk)
-        board.delete()
-        return Response({'message': "Board with id '{}' has been deleted".format(pk)}, status=204)
+class BoardDetailView(generics.RetrieveAPIView):
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
