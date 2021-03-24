@@ -21,6 +21,7 @@ from .settings import MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('board.urls', namespace='api')),
     path('accounts/', include('accounts.urls')),
+    path('boards/', include('board.urls')),
+    path('api/', include('board.api.urls', namespace='api')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
