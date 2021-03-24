@@ -6,8 +6,6 @@ from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from .serializers import BoardSerializer
-from rest_framework import generics
 
 
 def index(request):
@@ -119,13 +117,3 @@ def edit_ad(request, ad_id):
 def show_user_profile(request, user_id):
     ads = Board.objects.filter(user=user_id)
     return render(request, 'board/user_profile.html', {'ads': ads, 'rubrics': Rubric.objects.all, 'search_form': SearchForm})
-
-
-class BoardListView(generics.ListAPIView):
-    queryset = Board.objects.all()
-    serializer_class = BoardSerializer
-
-
-class BoardDetailView(generics.RetrieveAPIView):
-    queryset = Board.objects.all()
-    serializer_class = BoardSerializer
