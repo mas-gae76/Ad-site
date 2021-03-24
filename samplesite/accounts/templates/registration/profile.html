@@ -4,7 +4,7 @@
     <h1>Добро пожаловать, {{ user.first_name }}!</h1>
     <p><a class="main" href="{% url 'index' %}">На главную</a></p>
     <p><a class="main" href="{% url 'user_posts' %}">Мои объявления</a></p>
-    <p><a class="main" class="main" href="{% url 'add' %}">Добавить объявление</a></p>
+    <p><a class="main" href="{% url 'add' %}">Добавить объявление</a></p>
     <p><a class="main" href="{% url 'change_password' %}">Изменить пароль</a></p>
     <p><a class="main" href="{% url 'delete_account' %}">Удалить аккаунт</a></p>
     <p><a class="logout" href="{% url 'logout' %}">Выйти</a></p>
