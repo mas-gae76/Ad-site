@@ -23,7 +23,7 @@ class Board(models.Model):
     contacts = models.CharField(verbose_name='Контакты', max_length=15)
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     edited = models.DateTimeField(auto_now=True, db_index=True)
-    rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT, verbose_name='Рубрика')
+    rubric = models.ForeignKey(Rubric, null=True, on_delete=models.PROTECT, verbose_name='Рубрика', related_name='rubric')
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
     is_edited = models.BooleanField(default=False, db_index=True, verbose_name='Изменено')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
