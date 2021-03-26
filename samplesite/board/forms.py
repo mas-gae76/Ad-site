@@ -17,7 +17,7 @@ class BoardForm(forms.ModelForm):
 
     def clean_contacts(self):
         cd = self.cleaned_data
-        pattern = re.compile(r'^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$')
+        pattern = re.compile(r'^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$')
         if not pattern.search(cd['contacts']):
             raise forms.ValidationError('Номер телефона введён некорректно! \n Пример ввода: +7 123 456 78 90 или 8 123 456 78 90\n. Скобки в коде (), дефисы для читабельности - по желанию')
         return cd['contacts']
