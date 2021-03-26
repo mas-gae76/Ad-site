@@ -4,6 +4,9 @@
 {% block title %}{{ current_rubric.name }}{% endblock %}
 {% block content %}
 <h2>Рубрика: {{current_rubric.name }}</h2>
+{% if bs|length == 0 %}
+    <p>На данный момент ещё не опубликовано ни одного объявления в этой рубрике. Станьте первым продавцом <a href="{% url 'add' %}">Добавить объявление</a></p>
+{% else %}
 {% for b in bs %}
 <div class="ads">
     <h2>{{ b.title }}</h2>
@@ -38,4 +41,5 @@
     <a class="pointer" href="?page={{ page.next_page_number }}">&raquo;</a>
     {% endif %}
 </div>
+{% endif %}
 {% endblock %}
