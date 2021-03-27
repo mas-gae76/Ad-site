@@ -28,7 +28,7 @@
         {% else %}
         <p><b>{{ b.price }} &#8381;</b></p>
         {% endif %}
-        <p>{{ b.contacts }}</p>
+        <p><a class="phone" title="Связаться с продавцом" href="tel:{{ b.contacts }}">{{ b.contacts }}</a></p>
         {% for rubric in rubrics %}
         {% if rubric == b.rubric %}
         <a title="Просмотр объявлений из рубрики '{{ rubric }}'" class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
