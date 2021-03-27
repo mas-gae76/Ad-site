@@ -1,10 +1,10 @@
 from .base import *
 
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
-    ('Alex G', 'alex2904.goryachev@yandex.com')
+    ('Alex G', '')
 )
 
 ALLOWED_HOSTS = ['*']
@@ -12,9 +12,6 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'boards',
-        'USER': 'postgres',
-        'PASSWORD': 'mas8135',
         'HOST': '127.0.0.1',
         'PORT': 5432,
     }
