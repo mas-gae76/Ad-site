@@ -9,6 +9,11 @@
 {% else %}
 {% for b in bs %}
 <div class="ads">
+    {% if user.is_authenticated and b.user == user %}
+        <a title="Перейти в свой профиль" class="board_username" href="{% url 'user_profile' user.pk %}">Ваше объявление</a>
+    {% else %}
+        <a title="Перейти к '{{ b.user.username }}'" class="board_username" href="{% url 'user_profile' b.user.pk %}">{{ b.user.username }}</a>
+    {% endif %}
     <h2>{{ b.title }}</h2>
     {% if b.image %}
     <img src="{% thumbnail b.image 'default' %}">
@@ -21,7 +26,7 @@
     {% else %}
     <p>{{ b.price }} &#8381;</p>
     {% endif %}
-    <p>{{ b.contacts }}</p>
+    <p><a class="phone" title="Связаться с продавцом" href="tel:{{ b.contacts }}">{{ b.contacts }}</a></p>
     <p>{{ b.published }}</p>
     <hr align="left">
 </div>
