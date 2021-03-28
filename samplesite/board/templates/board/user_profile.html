@@ -1,6 +1,11 @@
 {% extends "layout/basic.html" %}
 {% load static %}
 {% load thumbnail %}
+{% block title %}
+    {% with ads|first as ad %}
+        Профиль '{{ ad.user }}'
+    {% endwith %}
+{% endblock %}
 {% block content %}
 {% for ad in ads %}
     {% if ad == ads|first %}
@@ -30,7 +35,7 @@
             {% else %}
             <p><b>{{ ad.price }} &#8381;</b></p>
             {% endif %}
-            <p>{{ ad.contacts }}</p>
+            <p><a class="phone" title="Связаться с продавцом" href="tel:{{ ad.contacts }}">{{ ad.contacts }}</a></p>
             {% for rubric in rubrics %}
             {% if rubric == ad.rubric %}
             <a title="Просмотр объявлений из рубрики '{{ rubric }}'" class="rubric_post" href="{% url 'by_rubric' rubric.pk %}">{{ rubric }}</a>
@@ -47,8 +52,12 @@
             <div class="user_data">
                 <p style="color: brown">Данные о пользователе</p>
                 <p>Ник пользователя: {{ ad.user.username }}</p>
+                {% if user.is_authenticated %}
                 <p>Имя: {{ ad.user.first_name }}</p>
                 <p>На сайте с {{ ad.user.date_joined|date:"m.Y" }}</p>
+                {% else %}
+                <p>Хотите узнать больше, пожалуйста, <a href="{% url 'login' %}">авторизуйтесь</a></p>
+                {% endif %}
             </div>
         {% endif %}
     </div>
